@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'//添加
+//添加
+publish {
+    userOrg = 'wanlaihuan'//bintray.com用户名
+    repoName = 'yingt-v2'// 新建的仓库名称
+    groupId = 'com.yingt.framework'//jcenter上的路径
+    artifactId = 'yingt-h5box'//项目名称
+    publishVersion = '1.0.5.7'//版本号
+	desc = 'Android 核心框架' // 描述
+    website = 'git@gitlab.inin88.com:mobile-stock-android-libs/framework-common.git' // 源码地址
+}
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+     compile 'com.android.support:appcompat-v7:25.3.0'
+
+    // JSBridge 数据交互框架 https://github.com/lzyzsd/JsBridge
+    compile 'com.github.lzyzsd:jsbridge:1.0.4'
+    // 腾讯开源的 sonic 框架 https://github.com/Tencent/VasSonic
+    compile 'com.tencent.sonic:sdk:1.0.0'
+	
+	compile 'com.yingt.framework:yingt-uimain:1.0.3.6'
+	compile 'com.yingt.framework:yingt-widgetkit:1.0.4.11'
+	compile 'com.yingt.framework:yingt-datepicker:1.0.3'
+	
+}
