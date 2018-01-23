@@ -1,7 +1,13 @@
 package com.wanbox.bxweb;
 
+import android.app.Application;
+import android.content.Context;
+import android.os.Build;
+import android.os.StrictMode;
+
 import com.wanbox.bxweb.event.JsHandler;
 import com.wanbox.bxweb.event.JsHandlerFactory;
+import com.yingt.uimain.util.Res;
 
 /**
  * @author laihuan.wan
@@ -10,7 +16,18 @@ import com.wanbox.bxweb.event.JsHandlerFactory;
 
 public class H5BoxInit {
 
-    public static void init() {
+    /**
+     *
+     * @param application
+     */
+    public static void init(Application application) {
+        // TODO: 解决 7.0 以上的手机启动摄像头闪退的问题
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+        }
+        // 初始化获取资源类
+        Res.setContext(application);
         registerCommonHandler();
     }
 

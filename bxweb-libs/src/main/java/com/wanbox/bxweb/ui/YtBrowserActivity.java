@@ -4,7 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.wanbox.bxweb.event.BxwebJsMessageProcessor;
+import com.wanbox.bxweb.event.BxwebJsMsgProcessor;
 import com.wanbox.bxweb.util.H5Box;
 import com.yingt.uimain.base.BaseFragmentActivity;
 import com.yingt.uimain.util.UiMain;
@@ -17,7 +17,7 @@ import com.yingt.uimain.util.UiMain;
 public class YtBrowserActivity extends BaseFragmentActivity {
 
     private BrowserFragment browserFragment;
-    private BxwebJsMessageProcessor bxwebJsMessageProcessor;
+    private BxwebJsMsgProcessor bxwebJsMsgProcessor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,9 @@ public class YtBrowserActivity extends BaseFragmentActivity {
         UiMain.with(this).loadV4Fragment(browserFragment);
 
         Object object = UiMain.getBindingTempDatas();
-        if (object != null && object instanceof BxwebJsMessageProcessor) {
-            bxwebJsMessageProcessor = (BxwebJsMessageProcessor) object;
-            bxwebJsMessageProcessor.setBrowserFragment(browserFragment);
+        if (object != null && object instanceof BxwebJsMsgProcessor) {
+            bxwebJsMsgProcessor = (BxwebJsMsgProcessor) object;
+            bxwebJsMsgProcessor.setBrowserFragment(browserFragment);
             UiMain.bindingTempDatas(null);
         }
 
@@ -61,9 +61,9 @@ public class YtBrowserActivity extends BaseFragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (bxwebJsMessageProcessor != null) {
-            bxwebJsMessageProcessor.setOnEventListener(null);
-            bxwebJsMessageProcessor.onDestroy();
+        if (bxwebJsMsgProcessor != null) {
+            bxwebJsMsgProcessor.setOnEventListener(null);
+            bxwebJsMsgProcessor.onDestroy();
         }
     }
 }

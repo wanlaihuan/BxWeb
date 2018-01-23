@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.github.lzyzsd.jsbridge.CallBackFunction;
-import com.wanbox.bxweb.event.BxwebJsMessageProcessor;
+import com.wanbox.bxweb.event.BxwebJsMsgProcessor;
 import com.wanbox.bxweb.event.Interceptor;
 import com.wanbox.bxweb.event.JsHandlerFactory;
 import com.wanbox.bxweb.ui.BrowserFragment;
@@ -40,7 +40,7 @@ public class H5Box {
         private boolean isTranslucentBars;//默认值就是个false了
         private int toolbarColor;
         private CallBackFunction callBackFunction;
-        private BxwebJsMessageProcessor bxwebJsMessageProcessor;
+        private BxwebJsMsgProcessor bxwebJsMsgProcessor;
 
         public Builder(Activity activity) {
             this.activity = activity;
@@ -130,9 +130,9 @@ public class H5Box {
          * @param onEventListener
          * @return
          */
-        public Builder setOnJsEventListener(BxwebJsMessageProcessor.OnEventListener onEventListener) {
-            bxwebJsMessageProcessor = new BxwebJsMessageProcessor(activity);
-            bxwebJsMessageProcessor.setOnEventListener(onEventListener);
+        public Builder setOnJsEventListener(BxwebJsMsgProcessor.OnEventListener onEventListener) {
+            bxwebJsMsgProcessor = new BxwebJsMsgProcessor(activity);
+            bxwebJsMsgProcessor.setOnEventListener(onEventListener);
             return this;
         }
 
@@ -155,7 +155,7 @@ public class H5Box {
             }
 
             setBundle(bundle);// 绑定数据
-            UiMain.bindingTempDatas(bxwebJsMessageProcessor);
+            UiMain.bindingTempDatas(bxwebJsMsgProcessor);
             UiMain.with(activity)
 //                    .bundingdata(bundle)
                     .go(YtBrowserActivity.class);

@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * Created by laihuan.wan on 2018/01/13 0028.
  */
 
-public class BxwebJsMessageProcessor extends JsCustomIProcessor {
+public class BxwebJsMsgProcessor extends JsCustomIProcessor {
     private BrowserFragment browserFragment;
     private OnEventListener mOnEventListener;
 
@@ -31,9 +31,9 @@ public class BxwebJsMessageProcessor extends JsCustomIProcessor {
         this.browserFragment = browserFragment;
     }
 
-    public BxwebJsMessageProcessor(Activity activity) {
+    public BxwebJsMsgProcessor(Activity activity) {
         super(activity);
-        EventBus.getDefault().register(BxwebJsMessageProcessor.this);
+        EventBus.getDefault().register(BxwebJsMsgProcessor.this);
     }
 
     public void onDestroy() {
